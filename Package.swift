@@ -2,17 +2,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "Lottie",
-    platforms: [.iOS(.v9)],
-    // platforms: [.iOS("9.0"), .macOS("10.10"), tvOS("9.0"), .watchOS("2.0")],
-    products: [
-        .library(name: "Lottie", targets: ["Lottie"])
-    ],
-    targets: [
-        .target(
-            name: "Lottie",
-            path: "lottie-swift/src",
-            exclude: ["Public/MacOS"]
-        )
-    ]
+	name: "Lottie",
+	platforms: [.iOS(.v11)],
+	products: [
+		.library(name: "Lottie", targets: ["Lottie"])
+	], dependencies: [
+		.package(url: "https://github.com/michaeleisel/ZippyJSON", from: "1.0.1")
+	],
+	   targets: [
+		.target(
+			name: "Lottie",
+			dependencies: ["ZippyJSON"],
+			path: "lottie-swift/src",
+			exclude: ["Public/MacOS"]
+		)
+	]
 )
